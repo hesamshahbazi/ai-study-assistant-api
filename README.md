@@ -1,34 +1,34 @@
 # 🚀 AI Study Assistant API
 
-A structured AI-powered Study Assistant API built with FastAPI and OpenAI.
-
-This backend transforms any topic or text into:
+A structured **FastAPI** backend powered by **OpenAI** that transforms any text or topic into a complete study pack:
 
 - Summary  
 - Key Points  
 - Flashcards  
-- Multiple-choice Quiz  
+- Multiple Choice Quiz  
 
-Designed with clean backend architecture and production-ready structure.
+Built with clean architecture, strict Pydantic validation, and interactive API documentation.
 
 ---
 
 ## ✨ Features
 
 - Structured JSON output (LLM schema controlled)
-- Strong validation using Pydantic models
-- Multiple specialized endpoints
-- Beginner / Intermediate / Advanced explanation levels
-- Multi-language support (en, de, fa)
-- Swagger documentation included
-- Environment variable configuration
-- Clean error handling
+- Multiple output modes:
+  - Full Study Pack
+  - Summary Only
+  - Flashcards Only
+  - Quiz Only
+- Language support: English, German, Persian
+- Level support: beginner / intermediate / advanced
+- Clean HTTP error handling
+- Interactive Swagger documentation
 
 ---
 
-## 🏗 Tech Stack
+## 🧰 Tech Stack
 
-- Python 3.13
+- Python 3.x
 - FastAPI
 - Pydantic
 - Uvicorn
@@ -38,52 +38,43 @@ Designed with clean backend architecture and production-ready structure.
 
 ---
 
-## 📂 Project Structure
+## 🗂 Project Structure
 
-app/  
-&nbsp;&nbsp;&nbsp;&nbsp;main.py  
-&nbsp;&nbsp;&nbsp;&nbsp;llm.py  
-&nbsp;&nbsp;&nbsp;&nbsp;schemas.py  
-&nbsp;&nbsp;&nbsp;&nbsp;__init__.py  
-
-.env.example  
-requirements.txt  
-README.md  
+ai-study-assistant-api/  
+├─ app/  
+│  ├─ __init__.py  
+│  ├─ main.py  
+│  ├─ schemas.py  
+│  └─ llm.py  
+├─ requirements.txt  
+├─ .env.example  
+├─ README.md  
+└─ .gitignore  
 
 ---
 
 ## ⚙️ Setup (Run Locally)
 
-1. Create Virtual Environment
+### 1. Create & activate virtual environment
 
-```
-python3 -m venv venv
-source venv/bin/activate
-```
+python3 -m venv venv  
+source venv/bin/activate  
 
-2. Install Dependencies
+### 2. Install dependencies
 
-```
-pip install -r requirements.txt
-```
+pip install -r requirements.txt  
 
-3. Create Environment File
+### 3. Create environment file
 
-```
-cp .env.example .env
-```
+cp .env.example .env  
 
 Inside `.env` add:
 
-```
-OPENAI_API_KEY=your_key_here
-```
+OPENAI_API_KEY=YOUR_KEY_HERE  
 
-4. Run the Server
+### 4. Run the server
 
-```
-uvicorn app.main:app --reload
-```
+uvicorn app.main:app --reload  
 
 Server:  
 http://localhost:8000  
@@ -93,32 +84,47 @@ http://localhost:8000/docs
 
 ---
 
-## 📡 API Endpoints
+## 🔌 API Endpoints
 
-POST `/study/assist`  
+POST /study/assist  
 Returns: summary, key_points, flashcards, quiz, extra  
 
-POST `/study/summary`  
+POST /study/summary  
 Returns: summary, key_points  
 
-POST `/study/flashcards`  
+POST /study/flashcards  
 Returns: flashcards  
 
-POST `/study/quiz`  
+POST /study/quiz  
 Returns: quiz  
 
 ---
 
-## 🔐 Environment Variables
+## 📨 Example Request
 
-OPENAI_API_KEY – Your OpenAI API key  
-
-`.env` is ignored by git.
+{
+  "text": "Explain REST APIs in simple terms",
+  "language": "en",
+  "level": "beginner"
+}
 
 ---
 
-## 👨‍💻 Author
+## 🎯 Why This Project?
+
+This project demonstrates:
+
+- Clean backend API architecture
+- Schema validation with Pydantic
+- Structured LLM output control
+- Multi-endpoint API design
+- External AI service integration
+- Production-ready backend practices
+
+---
+
+## 👤 Author
 
 Hesam Shahbazi  
 Computer Science Student  
-AI & Backend Enthusiast
+Backend & AI Enthusiast
