@@ -1,4 +1,4 @@
-# AI Study Assistant API
+# 🚀 AI Study Assistant API
 
 A structured AI-powered Study Assistant API built with FastAPI and OpenAI.
 
@@ -13,7 +13,7 @@ Designed with clean backend architecture and production-ready structure.
 
 ---
 
-## Features
+## ✨ Features
 
 - Structured JSON output (LLM schema controlled)
 - Strong validation using Pydantic models
@@ -26,7 +26,7 @@ Designed with clean backend architecture and production-ready structure.
 
 ---
 
-## Tech Stack
+## 🏗 Tech Stack
 
 - Python 3.13
 - FastAPI
@@ -38,122 +38,86 @@ Designed with clean backend architecture and production-ready structure.
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
-app/
-├── main.py
-├── llm.py
-├── schemas.py
-└── __init__.py
+app/  
+&nbsp;&nbsp;&nbsp;&nbsp;main.py  
+&nbsp;&nbsp;&nbsp;&nbsp;llm.py  
+&nbsp;&nbsp;&nbsp;&nbsp;schemas.py  
+&nbsp;&nbsp;&nbsp;&nbsp;__init__.py  
 
-.env.example
-requirements.txt
-README.md
+.env.example  
+requirements.txt  
+README.md  
 
 ---
 
-## Setup (Run Locally)
+## ⚙️ Setup (Run Locally)
 
-### 1. Create Virtual Environment
+1. Create Virtual Environment
 
-python3 -m venv venv  
-source venv/bin/activate  
+```
+python3 -m venv venv
+source venv/bin/activate
+```
 
-### 2. Install Dependencies
+2. Install Dependencies
 
-pip install -r requirements.txt  
+```
+pip install -r requirements.txt
+```
 
-### 3. Create Environment File
+3. Create Environment File
 
-cp .env.example .env  
+```
+cp .env.example .env
+```
 
 Inside `.env` add:
 
-OPENAI_API_KEY=your_key_here  
+```
+OPENAI_API_KEY=your_key_here
+```
 
----
+4. Run the Server
 
-### 4. Run the Server
+```
+uvicorn app.main:app --reload
+```
 
-uvicorn app.main:app --reload  
-
-Server:
+Server:  
 http://localhost:8000  
 
-Swagger:
+Swagger UI:  
 http://localhost:8000/docs  
 
 ---
 
-## API Endpoints
+## 📡 API Endpoints
 
-POST /study/assist  
+POST `/study/assist`  
 Returns: summary, key_points, flashcards, quiz, extra  
 
-POST /study/summary  
+POST `/study/summary`  
 Returns: summary, key_points  
 
-POST /study/flashcards  
+POST `/study/flashcards`  
 Returns: flashcards  
 
-POST /study/quiz  
+POST `/study/quiz`  
 Returns: quiz  
 
 ---
 
-## Example Request
+## 🔐 Environment Variables
 
-{
-  "text": "Explain REST API in simple terms",
-  "language": "en",
-  "level": "beginner"
-}
-
----
-
-## Example Response (Shortened)
-
-{
-  "summary": "REST is a way to build web services...",
-  "key_points": ["Uses HTTP methods", "Stateless communication"],
-  "flashcards": [
-    {"q": "What is REST?", "a": "An architectural style for APIs"}
-  ],
-  "quiz": [
-    {
-      "q": "Which method creates data?",
-      "options": ["GET", "POST", "PUT", "DELETE"],
-      "answer_index": 1
-    }
-  ],
-  "extra": null
-}
-
----
-
-## Environment Variables
-
-OPENAI_API_KEY — Your OpenAI API key  
+OPENAI_API_KEY – Your OpenAI API key  
 
 `.env` is ignored by git.
 
 ---
 
-## Why This Project?
-
-This project demonstrates:
-
-- Clean API architecture
-- Schema validation with Pydantic
-- Structured LLM output control
-- Multi-endpoint design
-- Backend error handling
-- Environment configuration best practices
-- Proper Git workflow
-
----
-
-## Author
+## 👨‍💻 Author
 
 Hesam Shahbazi  
 Computer Science Student  
