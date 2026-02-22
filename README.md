@@ -1,109 +1,107 @@
-🚀 AI Study Assistant API
+# AI Study Assistant API
 
-A structured AI-powered Study Assistant API built with FastAPI + OpenAI.
+A structured AI-powered Study Assistant API built with FastAPI and OpenAI.
 
 This backend transforms any topic or text into:
-	•	📘 Summary
-	•	🧠 Key Points
-	•	🗂 Flashcards
-	•	📝 Multiple-choice Quiz
+
+- Summary  
+- Key Points  
+- Flashcards  
+- Multiple-choice Quiz  
 
 Designed with clean backend architecture and production-ready structure.
 
-⸻
+---
 
-🧠 Features
-	•	✅ Structured JSON output (LLM schema controlled)
-	•	✅ Strong validation using Pydantic models
-	•	✅ Multiple specialized endpoints
-	•	✅ Beginner / Intermediate / Advanced explanation levels
-	•	✅ Multi-language support (en, de, fa)
-	•	✅ Swagger documentation included
-	•	✅ Environment variable configuration
-	•	✅ Clean error handling with HTTPException
+## Features
 
-⸻
+- Structured JSON output (LLM schema controlled)
+- Strong validation using Pydantic models
+- Multiple specialized endpoints
+- Beginner / Intermediate / Advanced explanation levels
+- Multi-language support (en, de, fa)
+- Swagger documentation included
+- Environment variable configuration
+- Clean error handling
 
-🏗 Tech Stack
-	•	Python 3.13
-	•	FastAPI
-	•	Pydantic
-	•	Uvicorn
-	•	OpenAI SDK
-	•	python-dotenv
-	•	Git
+---
 
-⸻
+## Tech Stack
 
-📂 Project Structure
+- Python 3.13
+- FastAPI
+- Pydantic
+- Uvicorn
+- OpenAI SDK
+- python-dotenv
+- Git
 
+---
+
+## Project Structure
 
 app/
- ├── main.py
- ├── llm.py
- ├── schemas.py
- └── __init__.py
+├── main.py
+├── llm.py
+├── schemas.py
+└── __init__.py
 
 .env.example
 requirements.txt
 README.md
 
+---
 
+## Setup (Run Locally)
 
-⚙️ Setup (Run Locally)
+### 1. Create Virtual Environment
 
-1️⃣ Create Virtual Environment
+python3 -m venv venv  
+source venv/bin/activate  
 
-python3 -m venv venv
-source venv/bin/activate
+### 2. Install Dependencies
 
-2️⃣ Install Dependencies
+pip install -r requirements.txt  
 
-pip install -r requirements.txt
+### 3. Create Environment File
 
-3️⃣ Create Environment File
+cp .env.example .env  
 
-cp .env.example .env
+Inside `.env` add:
 
-Then add your OpenAI key inside .env:
-OPENAI_API_KEY=your_key_here
+OPENAI_API_KEY=your_key_here  
 
-4️⃣ Run the Server
+---
 
-uvicorn app.main:app --reload
+### 4. Run the Server
+
+uvicorn app.main:app --reload  
 
 Server:
-http://localhost:8000
+http://localhost:8000  
 
-Swagger UI:
-http://localhost:8000/docs
+Swagger:
+http://localhost:8000/docs  
 
+---
 
-📡 API Endpoints
+## API Endpoints
 
-🔹 Full Study Pack
+POST /study/assist  
+Returns: summary, key_points, flashcards, quiz, extra  
 
-POST /study/assist
-Returns: summary, key_points, flashcards, quiz, extra
+POST /study/summary  
+Returns: summary, key_points  
 
-🔹 Summary Only
+POST /study/flashcards  
+Returns: flashcards  
 
-POST /study/summary
-Returns: summary, key_points
+POST /study/quiz  
+Returns: quiz  
 
-🔹 Flashcards Only
+---
 
-POST /study/flashcards
-Returns: flashcards
-
-🔹 Quiz Only
-
-POST /study/quiz
-Returns: quiz
-
-⸻
-
-📥 Example Request
+## Example Request
 
 {
   "text": "Explain REST API in simple terms",
@@ -111,15 +109,13 @@ Returns: quiz
   "level": "beginner"
 }
 
+---
 
-📤 Example Response (Shortened)
+## Example Response (Shortened)
 
 {
   "summary": "REST is a way to build web services...",
-  "key_points": [
-    "Uses HTTP methods",
-    "Stateless communication"
-  ],
+  "key_points": ["Uses HTTP methods", "Stateless communication"],
   "flashcards": [
     {"q": "What is REST?", "a": "An architectural style for APIs"}
   ],
@@ -133,30 +129,32 @@ Returns: quiz
   "extra": null
 }
 
+---
 
-🔐 Environment Variables
+## Environment Variables
 
-Variable
-Description
-OPENAI_API_KEY
-Your OpenAI API key
+OPENAI_API_KEY — Your OpenAI API key  
 
+`.env` is ignored by git.
 
-🎯 Why This Project?
+---
+
+## Why This Project?
 
 This project demonstrates:
-	•	Clean API architecture
-	•	Schema validation with Pydantic
-	•	Structured LLM output control
-	•	Multi-endpoint design
-	•	Backend error handling
-	•	Environment configuration best practices
-	•	Git workflow
 
-⸻
+- Clean API architecture
+- Schema validation with Pydantic
+- Structured LLM output control
+- Multi-endpoint design
+- Backend error handling
+- Environment configuration best practices
+- Proper Git workflow
 
-👨‍💻 Author
+---
 
-Hesam Shahbazi
-Computer Science Student
+## Author
+
+Hesam Shahbazi  
+Computer Science Student  
 AI & Backend Enthusiast
