@@ -21,7 +21,6 @@ Rules:
 - Keep it accurate and beginner-friendly if level=beginner.
 """
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 def build_user_prompt(text: str, language: str, level: str) -> str:
@@ -40,7 +39,7 @@ def generate_study_pack(text: str, language: str, level: str) -> dict:
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY is missing. Put it in .env file.")
 
-    client = OpenAI(api_key=api_key)
+    client = OpenAI(api_key=api_key, timeout=30.0, max_retries=1)
 
     system_prompt = (
         "You are an AI Study Assistant.\n"

@@ -9,13 +9,13 @@ This backend transforms any topic or text into:
 - Flashcards  
 - Multiple-choice Quiz  
 
-Designed with clean backend architecture and production-ready structure.
+Designed with clean backend architecture and a prototype structure.
 
 ---
 
 ## ✨ Features
 
-- Structured JSON output (LLM schema controlled)
+- JSON output validated locally with Pydantic (not strict provider-side schema enforcement)
 - Strong validation using Pydantic models
 - Multiple specialized endpoints
 - Beginner / Intermediate / Advanced explanation levels
@@ -122,3 +122,12 @@ OPENAI_API_KEY – Your OpenAI API key
 Hesam Shahbazi  
 Computer Science Student  
 AI & Backend Enthusiast
+
+## Tests and limitations
+
+Run `pip install -r requirements-dev.txt` then `python -m pytest -q`. Tests mock
+the model; they make no paid API calls. The app can start without a key, but
+generation requests then return a generic 502 error. Blank or oversized input
+is rejected with 422. This is a learning prototype without authentication or rate
+limiting. Specialized endpoints currently generate a full study pack and select
+the requested fields; they do not reduce model usage.
