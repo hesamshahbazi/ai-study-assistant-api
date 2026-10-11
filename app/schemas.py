@@ -1,4 +1,8 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, StringConstraints
+from typing import Annotated
+
+StudyText = Annotated[str, StringConstraints(strip_whitespace=True, min_length=3, max_length=20000)]
+NonBlank = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)]
 from typing import List, Literal, Optional
 
 
@@ -7,37 +11,37 @@ Language = Literal["en", "de", "fa"]
 
 
 class StudyRequest(BaseModel):
-    text: str = Field(..., min_length=3, description="User text/topic to study")
+    text: StudyText = Field(..., description="User text/topic to study")
     language: Language = Field("fa", description="Output language")
     level: Level = Field("beginner", description="Explanation level")
 
 
 class Flashcard(BaseModel):
-    q: str
-    a: str
+    q: NonBlank
+    a: NonBlank
 
 
 class QuizQuestion(BaseModel):
-    q: str
-    options: List[str] = Field(..., min_length=2)
-    answer_index: int = Field(..., ge=0, description="Index of correct option in options")
+    q: NonBlank
+    options: List[NonBlank] = Field(..., min_length=4, max_length=4)
+    answer_index: int = Field(..., ge=0, le=3, description="Index of correct option in options")
 
 
 class StudyResponse(BaseModel):
-    summary: str
-    key_points: List[str]
-    flashcards: List[Flashcard]
-    quiz: List[QuizQuestion]
+    summary: NonBlank
+    key_points: List[NonBlank] = Field(..., min_length=5, max_length=10)
+    flashcards: List[Flashcard] = Field(..., min_length=5, max_length=5)
+    quiz: List[QuizQuestion] = Field(..., min_length=5, max_length=5)
     extra: Optional[str] = None
 
 class SummaryOnlyResponse(BaseModel):
-    summary: str
-    key_points: List[str]
+    summary: NonBlank
+    key_points: List[NonBlank] = Field(..., min_length=5, max_length=10)
 
 
 class FlashcardsOnlyResponse(BaseModel):
-    flashcards: List[Flashcard]
+    flashcards: List[Flashcard] = Field(..., min_length=5, max_length=5)
 
 
 class QuizOnlyResponse(BaseModel):
-    quiz: List[QuizQuestion]
+    quiz: List[QuizQuestion] = Field(..., min_length=5, max_length=5)
